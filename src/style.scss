@@ -1,0 +1,66 @@
+$height-cell: 50px;
+$column-gap: 10px;
+
+@mixin border-spec {
+  border-top: 5px solid lightgrey;
+  border-right: 5px solid lightgrey;
+  border-bottom: 5px solid black;
+  border-left: 5px solid black;
+}
+
+@mixin hover-border-spec {
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+  border-bottom: 5px solid lightgrey;
+  border-left: 5px solid lightgrey;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  #main {
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 5px;
+    @include border-spec;
+    #display-clear-row {
+       display: flex;
+       justify-content: space-between;
+       column-gap: $column-gap;
+       #display {
+        background-color: steelblue;
+        width: 190px;
+        height: $height-cell;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        @include border-spec;
+      }
+    }
+    .cell {
+      width: $height-cell;
+      height: $height-cell;
+      background-color: dimgrey;
+      @include border-spec;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: $column-gap;
+      &:hover {
+        @include hover-border-spec;
+      }
+    }
+    #cell-container {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+     column-gap: $column-gap;
+    }
+  }
+}
